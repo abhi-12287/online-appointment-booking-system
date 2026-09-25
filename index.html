@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Appointment Booking</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f6fa;
+            margin: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #1565c0;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Book Appointment</h1>
+
+    <form action="/book" method="POST">
+
+        <label>Patient Name</label>
+        <input type="text"
+               name="name"
+               placeholder="Enter your name"
+               required>
+
+        <label>Email</label>
+        <input type="email"
+               name="email"
+               placeholder="Enter your email"
+               required>
+
+        <label>Select Doctor</label>
+
+        <select name="doctor" required>
+            <option value="">-- Select Doctor --</option>
+            <option value="Dr. Priya - General Physician">
+                Dr. Priya - General Physician
+            </option>
+
+            <option value="Dr. Rahul - Cardiologist">
+                Dr. Rahul - Cardiologist
+            </option>
+
+            <option value="Dr. Ananya - Dermatologist">
+                Dr. Ananya - Dermatologist
+            </option>
+        </select>
+
+        <label>Appointment Date</label>
+        <input type="date"
+               name="date"
+               required>
+
+        <label>Appointment Time</label>
+        <input type="time"
+               name="time"
+               required>
+
+        <label>Reason</label>
+        <textarea name="reason"
+                  placeholder="Enter reason for appointment"></textarea>
+
+        <button type="submit">
+            Book Appointment
+        </button>
+
+    </form>
+
+    <div class="link">
+        <a href="/appointments">
+            View My Appointments
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
