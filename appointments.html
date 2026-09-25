@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Appointments</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f6fa;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1565c0;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        .booked {
+            color: green;
+            font-weight: bold;
+        }
+
+        .cancelled {
+            color: red;
+            font-weight: bold;
+        }
+
+        .cancel {
+            background-color: #dc3545;
+            color: white;
+            padding: 7px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .cancel:hover {
+            background-color: #b02a37;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #1565c0;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Appointment Details</h1>
+
+    {% if appointments %}
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Email</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for appointment in appointments %}
+
+        <tr>
+
+            <td>{{ appointment["id"] }}</td>
+
+            <td>{{ appointment["name"] }}</td>
+
+            <td>{{ appointment["email"] }}</td>
+
+            <td>{{ appointment["doctor"] }}</td>
+
+            <td>{{ appointment["appointment_date"] }}</td>
+
+            <td>{{ appointment["appointment_time"] }}</td>
+
+            <td>{{ appointment["reason"] }}</td>
+
+            <td>
+                {% if appointment["status"] == "Booked" %}
+                    <span class="booked">
+                        {{ appointment["status"] }}
+                    </span>
+                {% else %}
+                    <span class="cancelled">
+                        {{ appointment["status"] }}
+                    </span>
+                {% endif %}
+            </td>
+
+            <td>
+
+                {% if appointment["status"] == "Booked" %}
+
+                <a class="cancel"
+                   href="/cancel/{{ appointment['id'] }}"
+                   onclick="return confirm('Are you sure you want to cancel this appointment?')">
+                    Cancel
+                </a>
+
+                {% else %}
+
+                -
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p style="text-align:center;">
+        No appointments found.
+    </p>
+
+    {% endif %}
+
+    <a class="back" href="/">
+        Book New Appointment
+    </a>
+
+</div>
+
+</body>
+</html>
