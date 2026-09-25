@@ -183,6 +183,6 @@ The project provides a simple online platform for managing doctor appointments a
 
 ## Author
 
-**Your Name**
+**Abhiram**
 
 Online Appointment Booking System — Python Flask Project
